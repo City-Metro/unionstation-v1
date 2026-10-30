@@ -374,10 +374,10 @@ table.t th{background:var(--card);font-size:.85rem;letter-spacing:.05em;text-tra
 .board-filters{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
 .bf{padding:8px 14px;border:1.5px solid rgba(255,255,255,.5);border-radius:999px;background:transparent;color:#fff;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer}
 .bf[aria-pressed="true"]{background:#fff;color:#07122b;border-color:#fff}
-.dep{display:grid;grid-template-columns:120px minmax(0,1fr) 250px;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.dep{display:grid;grid-template-columns:120px minmax(0,1fr) 290px;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
 .dep:last-child{border-bottom:0}
 .dep-cols{padding:12px 0 6px;color:#a9b8d6;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;border-bottom:1px solid rgba(255,255,255,.2)}
-.dep-meta{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:center}
+.dep-meta{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:center}
 .dep-cols .dep-meta{display:grid}
 .dep-time b{display:block;font-size:1.25rem;font-variant-numeric:tabular-nums}
 .dep-time s{display:block;color:#a9b8d6;font-size:.85rem}
@@ -387,7 +387,9 @@ table.t th{background:var(--card);font-size:.85rem;letter-spacing:.05em;text-tra
 .dep-dest b{display:block;font-size:1.1rem}
 .dep-dest small{display:block;color:#a9b8d6;font-size:.88rem}
 .dep-dest .dep-note{color:#ffd27a}
-.dep-plat small{display:none}
+.dep-plat .dep-label{display:none}
+.dep-area{display:block;color:#a9b8d6;font-size:.8rem}
+.dep-then{color:#cfd9ee!important}
 .dep-plat b{font-size:1.15rem}
 .dep-status{display:inline-block;justify-self:start;padding:4px 12px;border-radius:999px;font-weight:700;font-size:.85rem;background:rgba(255,255,255,.12)}
 .dep-status[data-kind="ok"]{background:rgba(111,209,168,.18);color:#8fe8c0}
@@ -402,7 +404,8 @@ table.t th{background:var(--card);font-size:.85rem;letter-spacing:.05em;text-tra
 .dep-cols{display:none}
 .dep{grid-template-columns:96px minmax(0,1fr);gap:8px 12px}
 .dep-meta{grid-column:2;display:flex;align-items:center;gap:14px}
-.dep-plat small{display:inline;margin-right:6px;color:#a9b8d6}
+.dep-plat .dep-label{display:inline;margin-right:6px;color:#a9b8d6}
+.dep-area{display:inline;margin-left:8px}
 .dep-plat b{font-size:1rem}
 }
 
