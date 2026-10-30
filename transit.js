@@ -13,7 +13,7 @@
     ACCESS_URL: 'https://alerts.citymetro.xyz',    // "Elevator & Escalator Status" row
     // Optional: put your own copies of the rail line images on this site (e.g. /img/lines/a.svg or a.png, named by the line's slug)
     // and set this to '/img/lines/'. They are tried first, then the image from the database. Leave '' to use the database images only.
-    LOCAL_IMG_DIR: '',
+    LOCAL_IMG_DIR: 'https://police.citymetro.xyz/img/lines/',
     PLANNER_URL: 'https://trip-planner.citymetro.xyz/planner',   // opened as ?from=<station id>&to=<station id>
     PLANNER_HOME: 'https://trip-planner.citymetro.xyz',
     // Which field on each alerts line says "rail", "bus" or "accessibility". Tried in this order.
@@ -66,13 +66,13 @@
   // once it has really loaded, and a failed load is retried (a busy image host sometimes refuses a burst of
   // requests right after a page reload). If it never loads, the letter simply stays.
   const bust = u => u + (u.includes('?') ? '&' : '?') + 'r=' + Date.now();
-  function loadImage(urls, onOk) {
+  function loadImage(urls, onOk, onFail) {
     const list = urls.filter(Boolean); if (!list.length) return;
     // Try each address once, then once more (slightly later, with a fresh address) in case the host was briefly busy.
     const seq = [...list.map(u => ({ u, d: 0 })), ...list.map(u => ({ u, d: 1500, retry: true }))];
     let i = 0;
     const next = () => {
-      if (i >= seq.length) { console.warn('City Metro: line image did not load:', list.join(' | ')); return; }
+      if (i >= seq.length) { console.warn('City Metro: line image did not load:', list.join(' | ')); if (onFail) onFail(); return; }
       const { u, d, retry } = seq[i++];
       setTimeout(() => {
         const im = new Image(); im.alt = '';
@@ -86,7 +86,10 @@
     const bg = l.color || '#64748b';
     const node = el(href ? 'a' : 'span', { class: 'lb' + (small ? ' sm' : ''), href, title: title || l.name || null, 'aria-label': title || l.name || null }, shortName(l));
     node.style.background = bg; node.style.color = l.text_color || textOn(bg);
-    if (l.iconUrl) loadImage(l.iconUrls || [l.iconUrl], im => node.replaceChildren(im));
+    if (l.iconUrl) {
+      node.classList.add('img-pending');
+      loadImage(l.iconUrls || [l.iconUrl], im => { node.replaceChildren(im); node.classList.remove('img-pending'); }, () => node.classList.remove('img-pending'));
+    }
     return node;
   }
 
