@@ -1,12 +1,13 @@
 /* ===== EDIT ME ===== */
 const ANNOUNCEMENT = {
   enabled: true,
-  text: "Welcome to Union Station, Lego City: one station, four railroads.",
+  text: "Welcome to Union Station Lego City: one station, four operators.",
   linkText: "See operators",
   linkHref: "/operators"
 };
 const NAV = [
   { label: "Home", href: "/" },
+  { label: "Departures", href: "/departures" },
   { label: "Operators", href: "/operators", items: [
     { label: "City Metro", href: "https://citymetro.xyz" },
     { label: "Republic State Railways", href: "https://rsr.citymetro.xyz" },
@@ -14,7 +15,7 @@ const NAV = [
     { label: "City Metro-North Railroad", href: "https://mnrr.citymetro.xyz" } ] },
   { label: "Station", href: "/station", items: [
     { label: "Facilities", href: "/station#facilities" },
-    { label: "Getting here & transfers", href: "/station#transfers" },
+    { label: "Lines & transfers", href: "/station#transfers" },
     { label: "Accessibility", href: "/station#accessibility" } ] },
   { label: "Plan a Trip", href: "https://trip-planner.citymetro.xyz", items: [
     { label: "Trip Planner", href: "https://trip-planner.citymetro.xyz" },
@@ -38,7 +39,7 @@ function renderHeader() {
   }
   document.getElementById("site-header").innerHTML = `${bar}
   <header class="site-header"><div class="container header-inner">
-    <a class="logo" href="/" aria-label="Union Station home"><img src="/logo.png" alt="Union Station"></a>
+    <a class="logo" href="/" aria-label="Union Station Lego City home"><img src="https://police.citymetro.xyz/logo.png" alt="City Metro"><span class="logo-text">Union Station<small>Lego City</small></span></a>
     <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" aria-label="Main"><ul class="nav-list">${items}</ul><div class="nav-cta-wrap"><a class="btn nav-cta" href="/contact">Contact Us</a></div></nav>
   </div></header>`;
@@ -62,8 +63,25 @@ function renderFooter() {
   document.getElementById("site-footer").innerHTML = `<footer class="site-footer"><div class="container">
     <div class="footer-cols">${cols}</div>
     ${social ? `<div class="social" aria-label="Social media">${social}</div>` : ""}
-    <div class="legal"><span>© Union Station, Lego City. Served by City Metro, Republic State Railways, City MetroLink and City Metro-North Railroad.</span>
+    <div class="legal"><span>© Union Station Lego City. Owned and operated by City Metro, a subsidiary of the Republic States Railway and Transportation Authority.</span>
     <span><a href="/contact">Contact</a></span></div>
   </div></footer>`;
 }
 renderHeader(); renderFooter();
+
+/* header logo + operator logos: fall back quietly (CSP blocks inline onerror, so it is attached here) */
+const hl = document.querySelector(".logo img");
+if (hl) hl.addEventListener("error", () => hl.remove(), { once: true });
+function initOpLogos() {
+  document.querySelectorAll("img[data-srcs]").forEach(im => {
+    const list = im.dataset.srcs.split(" ").filter(Boolean);
+    let i = 0;
+    const next = () => {
+      if (i < list.length) { im.src = list[i++]; return; }
+      const m = document.createElement("div"); m.className = "op-mark"; m.textContent = im.dataset.code || im.alt; im.replaceWith(m);
+    };
+    im.addEventListener("error", next);
+    next();
+  });
+}
+initOpLogos();
