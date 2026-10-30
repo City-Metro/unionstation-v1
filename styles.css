@@ -142,7 +142,7 @@ a.btn.ghost:hover{background:var(--card)}
 @media (min-width:901px){.nav{display:flex;align-items:center;gap:8px}.nav-cta-wrap{margin:0 0 0 8px;padding:0}}
 .line-icon svg[viewBox="0 0 100 100"]{width:46px;height:46px}
 /* big image hero */
-.hero-img{position:relative;min-height:min(80vh,680px);display:flex;align-items:flex-end;color:#fff;background:#0d2a5f url(/hero.svg) center/cover no-repeat}
+.hero-img{position:relative;min-height:min(80vh,680px);display:flex;align-items:flex-end;color:#fff;background:#0d2a5f url(https://police.citymetro.xyz/hero.svg) center/cover no-repeat}
 .hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,18,45,.78),rgba(6,18,45,.3) 60%,transparent),linear-gradient(0deg,rgba(6,18,45,.5),transparent 45%)}
 .hero-img .container{position:relative;width:100%;padding-top:96px;padding-bottom:72px}
 .hero-img h1{font-size:clamp(3rem,9vw,5.8rem);line-height:1;margin:0 0 18px;font-weight:400;letter-spacing:-.02em}
@@ -155,7 +155,7 @@ a.btn.ghost:hover{background:var(--card)}
 .crumbs a{color:var(--tile-ink)}
 .about-title{font-size:clamp(2.2rem,6vw,3.4rem);margin:12px 0 12px}
 .measure{max-width:760px}
-.about-img{border-radius:28px;aspect-ratio:21/9;min-height:220px;background:#0d2a5f url(/hero.svg) 60% center/cover;border:1px solid var(--line);margin:32px 0}
+.about-img{border-radius:28px;aspect-ratio:21/9;min-height:220px;background:#0d2a5f url(https://police.citymetro.xyz/hero.svg) 60% center/cover;border:1px solid var(--line);margin:32px 0}
 .h2{font-size:clamp(1.6rem,4vw,2.2rem);margin:56px 0 12px}
 .tl-item{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
 .tl-item:last-child{border-bottom:1px solid var(--line)}
@@ -171,7 +171,7 @@ a.btn.ghost:hover{background:var(--card)}
 /* dark mode: turn the black logo white */
 @media (prefers-color-scheme:dark){.logo img{filter:brightness(0) invert(1)}}
 /* 404 */
-.nf-img{border-radius:28px;aspect-ratio:2/1;min-height:220px;max-height:420px;background:#0d2a5f url(/404.svg) center/cover no-repeat;border:1px solid var(--line);margin:40px 0 32px}
+.nf-img{border-radius:28px;aspect-ratio:2/1;min-height:220px;max-height:420px;background:#0d2a5f url(https://police.citymetro.xyz/404.svg) center/cover no-repeat;border:1px solid var(--line);margin:40px 0 32px}
 .nf{text-align:center;padding-bottom:72px}
 .nf h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:0 0 8px}
 .nf p{color:var(--muted);font-size:1.15rem;margin:0 auto 24px;max-width:520px}
