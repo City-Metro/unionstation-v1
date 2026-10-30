@@ -2,16 +2,16 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Union Station | Lego City</title><meta name="description" content="Union Station is Lego City’s central rail hub, served by City Metro, Republic State Railways, City MetroLink and City Metro-North Railroad.">
-<link rel="stylesheet" href="/styles.css?v=20261030a">
-<link rel="icon" href="https://police.citymetro.xyz/logo.svg" type="image/svg+xml">
+<title>Union Station Lego City</title><meta name="description" content="Union Station Lego City is served by City Metro, Republic State Railways, City MetroLink and City Metro-North Railroad.">
+<link rel="stylesheet" href="/styles.css?v=20261030c">
+<link rel="icon" href="https://police.citymetro.xyz/favicon.ico" sizes="any">
 </head><body>
 <div id="site-header"></div>
 <main>
 <section class="hero-img"><div class="container">
-<h1>Union Station</h1>
-<p>Lego City’s central rail hub. Four operators, one station, every direction.</p>
-<div class="btn-row"><a class="btn" href="/operators">Our operators</a><a class="btn ghost" href="https://trip-planner.citymetro.xyz">Plan a trip</a></div>
+<h1>Union Station Lego City</h1>
+<p>One station, four operators, every direction.</p>
+<div class="btn-row"><a class="btn" href="/operators">Our operators</a><a class="btn ghost" href="/departures">Departures</a></div>
 <div class="op-strip"><a class="op-pill cm" href="/operators#city-metro"><span class="op-dot"></span>City Metro</a><a class="op-pill rsr" href="/operators#rsr"><span class="op-dot"></span>Republic State Railways</a><a class="op-pill ml" href="/operators#metrolink"><span class="op-dot"></span>City MetroLink</a><a class="op-pill mn" href="/operators#metro-north"><span class="op-dot"></span>City Metro-North Railroad</a></div>
 </div></section>
 <div class="container hub-wrap" id="plan">
@@ -24,6 +24,7 @@
 <label class="field"><span>To</span><input name="to" placeholder="Station or stop" required></label>
 <p class="plan-msg" id="plan-msg" role="status"></p>
 <button class="btn-light" type="submit">Plan My Trip</button>
+<p class="plan-note">The Trip Planner covers City Metro Rail and City Metro Bus only.</p>
 </form>
 </section>
 <section class="hub-panel status-panel" aria-labelledby="status-title">
@@ -43,24 +44,27 @@
 <a href="/station"><span class="line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.4 5.6 19 7.5 19L6 20.5v.5h2.2l2-2h3.6l2 2H18v-.5L16.5 19c1.9 0 3.5-1.6 3.5-3.5V6c0-3.5-4-4-8-4zM7.5 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5-6H6V6h5v5zm2 0V6h5v5h-5zm3.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></span>Station Info</a>
 </div></div>
 <div class="container">
+<section class="sec"><div class="sec-head"><h2>Departures</h2><a href="/departures">Full departure board &rarr;</a></div>
+<div id="board" data-limit="8"></div></section>
 <div class="stats">
-<div class="stat"><b>4</b><span>Railroads &amp; transit operators</span></div>
-<div class="stat"><b>1</b><span>Central station</span></div>
-<div class="stat"><b>24/7</b><span>City Metro service</span></div>
-<div class="stat"><b>3</b><span>Metro lines meet here</span></div>
+<div class="stat"><b>4</b><span>Operators</span></div>
+<div class="stat"><b>5</b><span>City Metro rail lines</span></div>
+<div class="stat"><b>3</b><span>City Metro bus lines</span></div>
+<div class="stat"><b>Fully</b><span>accessible station</span></div>
 </div>
-<section class="sec"><div class="sec-head"><h2>Operators at Union Station</h2><a href="/operators">Compare operators &rarr;</a></div>
+<section class="sec"><div class="sec-head"><h2>Operators at Union Station Lego City</h2><a href="/operators">See all lines &rarr;</a></div>
 <div class="lines-grid">
-<div class="op-card op-cm"><div class="op-mark">CM</div><span class="op-tag">Subway, light rail and bus</span><h3>City Metro</h3><p>The home system of Lego City County. Subway and light rail lines meet at Union Station, along with the city bus loop and downtown routes.</p><div class="op-links"><a href="https://citymetro.xyz">Visit City Metro &rarr;</a><a href="https://alerts.citymetro.xyz">Alerts &rarr;</a></div></div><div class="op-card op-rsr"><div class="op-mark">RSR</div><span class="op-tag">Intercity and regional rail</span><h3>Republic State Railways</h3><p>Long distance and regional passenger rail linking Lego City with the rest of the Republic States.</p><div class="op-links"><a href="https://rsr.citymetro.xyz">Visit Republic State Railways &rarr;</a></div></div><div class="op-card op-ml"><div class="op-mark">ML</div><span class="op-tag">Commuter rail</span><h3>City MetroLink</h3><p>Commuter rail carrying riders between Union Station and communities across Lego City County.</p><div class="op-links"><a href="https://metrolink.citymetro.xyz">Visit City MetroLink &rarr;</a></div></div><div class="op-card op-mn"><div class="op-mark">MN</div><span class="op-tag">Commuter rail to the north</span><h3>City Metro-North Railroad</h3><p>Commuter rail serving the northern part of the region, running from Union Station to points north.</p><div class="op-links"><a href="https://mnrr.citymetro.xyz">Visit Metro-North &rarr;</a></div></div>
+<div class="op-card op-cm"><img class="op-logo dk-invert" data-srcs="https://police.citymetro.xyz/logo.png" data-code="CM" alt="City Metro"><span class="op-tag">Rail and bus</span><h3>City Metro</h3><p>Owns and operates Union Station Lego City. Five rail lines and three bus lines serve the station.</p><div class="op-links"><a href="https://citymetro.xyz">Visit City Metro &rarr;</a><a href="https://alerts.citymetro.xyz">Alerts &rarr;</a></div></div><div class="op-card op-rsr"><img class="op-logo" data-srcs="https://police.citymetro.xyz/RSR.png https://police.citymetro.xyz/rsr.png" data-code="RSR" alt="Republic State Railways"><span class="op-tag">Passenger rail</span><h3>Republic State Railways</h3><p>Republic State Railways passenger trains serve Union Station. Visit their website for routes and tickets.</p><div class="op-links"><a href="https://rsr.citymetro.xyz">Visit Republic State Railways &rarr;</a></div></div><div class="op-card op-ml"><img class="op-logo dk-invert" data-srcs="https://police.citymetro.xyz/logo.png" data-code="ML" alt="City MetroLink"><span class="op-tag">Commuter rail</span><h3>City MetroLink</h3><p>City MetroLink runs two lines through Union Station Lego City.</p><div class="op-links"><a href="https://metrolink.citymetro.xyz">Visit City MetroLink &rarr;</a></div></div><div class="op-card op-mn"><img class="op-logo dk-invert" data-srcs="https://police.citymetro.xyz/logo.png" data-code="MN" alt="City Metro-North Railroad"><span class="op-tag">Commuter rail</span><h3>City Metro-North Railroad</h3><p>City Metro-North Railroad runs one line, from TV Room Central to Felix Lego City International Airport.</p><div class="op-links"><a href="https://mnrr.citymetro.xyz">Visit Metro-North &rarr;</a></div></div>
 </div></section>
 <section class="sec"><div class="promos">
-<div class="promo"><h2>Getting around the station</h2><p>Find facilities, transfers between operators and accessibility information.</p><a class="btn" href="/station">Station guide</a></div>
+<div class="promo"><h2>Shop, sip and explore</h2><p>The station has a Lego store, a coffee shop and other activities. It is fully accessible.</p><a class="btn" href="/station">Station guide</a></div>
 <div class="promo"><h2>Pay with MyBrickPass</h2><p>Load fares and manage your City Metro account in our fare payment portal.</p><a class="btn" href="https://mybrickpass.citymetro.xyz">Go to MyBrickPass</a></div>
 </div></section>
-<div class="cta-band"><h2>Ready to ride?</h2><p>Plan your trip in seconds and get where you are going.</p><a class="btn" href="https://trip-planner.citymetro.xyz">Open Trip Planner</a></div>
+<p class="owner-note">Union Station Lego City is owned and operated by City Metro, a subsidiary of the Republic States Railway and Transportation Authority.</p>
 </div>
 </main>
 <div id="site-footer"></div>
-<script src="/site.js?v=20261030a"></script>
-<script src="/transit.js?v=20261030a" defer></script>
+<script src="/site.js?v=20261030c"></script>
+<script src="/departures.js?v=20261030c"></script>
+<script src="/transit.js?v=20261030c" defer></script>
 </body></html>
