@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.citymetro.xyz https://*.workers.dev; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://api.trip-planner.citymetro.xyz https://ride-metro.felixfeger46.workers.dev; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://trip-planner.citymetro.xyz; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://citymetro.xyz https://*.citymetro.xyz https://*.workers.dev; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://api.trip-planner.citymetro.xyz https://ride-metro.felixfeger46.workers.dev; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://trip-planner.citymetro.xyz; object-src 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=31536000
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
@@ -10,4 +10,6 @@
 /site.js
   Cache-Control: no-cache
 /transit.js
+  Cache-Control: no-cache
+/departures.js
   Cache-Control: no-cache
