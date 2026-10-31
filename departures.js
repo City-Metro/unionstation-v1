@@ -29,10 +29,10 @@ const BOARD = {
   pageRows: 30
 };
 const OPERATORS = {
-  cm:  { name: "City Metro",                code: "CM",  color: "#134590" },
-  rsr: { name: "Republic State Railways",   code: "RSR", color: "#8a1c2b" },
-  ml:  { name: "City MetroLink",            code: "ML",  color: "#0f7a5a" },
-  mn:  { name: "City Metro-North Railroad", code: "MN",  color: "#b45309" }
+  cm:  { name: "City Metro",                code: "CM",  color: "#8cc8f0", text: "#0b2a55" },  // white / light blue
+  rsr: { name: "Republic State Railways",   code: "RSR", color: "#c4161c", text: "#ffffff" },  // red
+  ml:  { name: "City MetroLink",            code: "ML",  color: "#1d5fd1", text: "#ffffff" },  // blue
+  mn:  { name: "City Metro-North Railroad", code: "MN",  color: "#14803f", text: "#ffffff" }   // green
 };
 const RSR_SERVICE = "City Metro Express, operated by Republic State Railways";
 const SERVICES = [
@@ -160,7 +160,7 @@ const SERVICES = [
       const s = r.s, op = OPERATORS[s.op] || { name: s.op, code: String(s.op).toUpperCase(), color: '#64748b' };
       const until = r.times[0];
       const [label, kind] = statusOf(s, until);
-      const chip = el('span', { class: 'dep-chip', text: s.line || op.code }); chip.style.background = op.color;
+      const chip = el('span', { class: 'dep-chip', text: s.line || op.code }); chip.style.background = op.color; chip.style.color = op.text || '#fff';
       const then = r.times.slice(1).map(u => clockOf(n.mins + u, true)).join(', ');
       return el('div', { class: 'dep' + (s.status === 'cancelled' ? ' is-cancelled' : '') },
         el('div', { class: 'dep-time' },
