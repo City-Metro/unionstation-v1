@@ -445,3 +445,9 @@ table.t th{background:var(--card);font-size:.85rem;letter-spacing:.05em;text-tra
 .emergency .line-icon{background:#c4161c;color:#fff;flex:none}
 @media (prefers-color-scheme:dark){.emergency{background:#3a1317;border-color:#f26b72;color:#ffd9dc}.emergency a{color:#fff}.emergency .line-icon{background:#f26b72;color:#2a0a0d}}
 .legal-note{margin:14px 0 0;font-size:.85rem;opacity:.85}
+
+/* departure board: real line images + train numbers */
+.dep-chip.is-pending{background:transparent!important;border-color:transparent;color:transparent}
+.dep-chip.has-img{background:transparent!important;border:0;padding:0;min-width:46px;width:46px}
+.dep-chip img{display:block;width:46px;height:46px;object-fit:contain}
+.dep-train{color:#fff!important;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.02em}
