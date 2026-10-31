@@ -24,7 +24,6 @@ const NAV = [
     { label: "MyBrickPass", href: "https://mybrickpass.citymetro.xyz" } ] }
 ];
 const SOCIAL = [];
-const NOUPE_SNIPPET = `<script src='https://www.noupe.com/embed/01a0f9a8fe0870008c410c945c6507b28d60.js'></script>`;
 /* ==================== */
 
 const path = location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
