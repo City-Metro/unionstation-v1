@@ -65,7 +65,7 @@ function renderFooter() {
     ${social ? `<div class="social" aria-label="Social media">${social}</div>` : ""}
     <div class="legal"><span>© Union Station Lego City. Owned and operated by City Metro, a subsidiary of the Republic States Railway and Transportation Authority.</span>
     <span><a href="/contact">Contact</a></span></div>
-    ${path === "/contact" ? '<p class="legal-note">In an emergency, always call 911 first. For security concerns, contact City Metro Transit Police at 888-CM-SAFE or text 77777. Notice: 800-UNION-STA is a fake phone number and does not connect to a real line.</p>' : ""}
+    ${path === "/contact" ? '<p class="legal-note">In an emergency, always call 911 first. Notice: 800-UNION-STA, 888-CM-SAFE, and 77777 are fake phone numbers and don't connect to a real line.</p>' : ""}
   </div></footer>`;
 }
 renderHeader(); renderFooter();
