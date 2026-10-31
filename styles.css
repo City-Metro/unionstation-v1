@@ -1,453 +1,414 @@
-:root{--bg:#fff;--text:#0b1220;--muted:#5b6475;--line:#e5e8ee;--card:#f5f7fb;--blue:#134590;--blue-hover:#0e3573;--btn-text:#fff;--announce-bg:#cfe0f3;--announce-text:#0b1220}
-@media (prefers-color-scheme:dark){:root{--bg:#000;--text:#f2f4f8;--muted:#a3abbb;--line:#222833;--card:#11151c;--blue:#134590;--blue-hover:#1a56b0;--announce-bg:#1b2f4d;--announce-text:#f2f4f8}}
-*{box-sizing:border-box}
-html{color-scheme:light dark}
-body{margin:0;background:var(--bg);color:var(--text);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.container{max-width:1100px;margin:0 auto;padding:0 24px}
-/* announcement */
-.announce{background:var(--announce-bg);color:var(--announce-text);text-align:center;padding:10px 44px;font-weight:700;position:relative}
-.announce a{text-decoration:underline}
-.announce button{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:0;color:inherit;font-size:22px;cursor:pointer;line-height:1}
-/* header */
-.site-header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{display:inline-flex;width:44px;height:44px;border:2.5px solid var(--text);border-radius:50%;align-items:center;justify-content:center;font-size:28px;font-weight:700;text-decoration:none;padding-bottom:4px}
-.nav-list{list-style:none;margin:0;padding:0;display:flex;gap:4px;align-items:center}
-.nav-link,.dd-toggle{background:none;border:0;font:inherit;font-weight:700;color:var(--text);padding:10px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border-radius:8px}
-.nav-link:hover,.dd-toggle:hover,.nav-link.active{background:var(--card)}
-.dd-toggle::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}
-.has-dd{position:relative}
-.dd-menu{display:none;list-style:none;margin:0;padding:8px;position:absolute;top:100%;left:0;min-width:260px;background:var(--bg);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-.dd-menu a{display:block;padding:10px 12px;border-radius:8px;text-decoration:none}
-.dd-menu a:hover{background:var(--card)}
-.has-dd.open .dd-menu{display:block}
-@media (hover:hover) and (min-width:901px){.has-dd:hover .dd-menu{display:block}}
-.menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px}
-.menu-btn span{display:block;width:28px;height:3px;background:var(--text);margin:6px 0;transition:.2s}
-.menu-btn[aria-expanded=true] span:nth-child(1){transform:translateY(9px) rotate(45deg)}
-.menu-btn[aria-expanded=true] span:nth-child(2){opacity:0}
-.menu-btn[aria-expanded=true] span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
-/* buttons */
-.btn{display:inline-block;background:var(--blue);color:var(--btn-text);padding:14px 32px;border-radius:999px;font-weight:700;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer}
-.btn:hover{background:var(--blue-hover)}
-.nav-cta{margin-left:8px;padding:10px 22px}
-/* content */
-.hero{padding:72px 0 56px}
-.hero h1{font-size:clamp(2.6rem,7vw,4.5rem);line-height:1.05;margin:0 0 20px;font-weight:400}
-.hero p{font-size:1.25rem;max-width:620px;color:var(--muted);margin:0 0 28px}
-.page-head{padding:56px 0 24px}
-.page-head h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 8px}
-.page-head p{color:var(--muted);margin:0}
-main{min-height:60vh}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin:24px 0 64px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-.card h3{margin:0 0 6px}
-.card p{margin:0 0 14px;color:var(--muted)}
-.price{font-size:2.4rem;font-weight:700;margin:4px 0}
-.prose{max-width:760px;padding-bottom:64px}
-.prose h2{margin-top:36px}
-/* footer */
-.site-footer{border-top:1px solid var(--line);padding:48px 0 32px;background:var(--card)}
-.footer-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px}
-.footer-cols h4{margin:0 0 10px}
-.footer-cols ul{list-style:none;margin:0;padding:0}
-.footer-cols li{margin:6px 0}
-.footer-cols a{color:var(--muted);text-decoration:none}
-.footer-cols a:hover{color:var(--text);text-decoration:underline}
-.legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
-.legal a{color:var(--muted)}
-/* mobile */
-@media (max-width:900px){
-.menu-btn{display:block}
-.nav{display:none;position:fixed;inset:73px 0 0 0;background:var(--bg);padding:16px 24px 32px;overflow-y:auto;flex-direction:column}
-.nav.open{display:flex}
-.nav-list{flex-direction:column;align-items:stretch;gap:0;width:100%}
-.nav-link,.dd-toggle{width:100%;justify-content:space-between;font-size:1.25rem;padding:18px 4px;border-radius:0}
-.dd-toggle::after{transform:rotate(-45deg)}
-.has-dd.open .dd-toggle::after{transform:rotate(45deg)}
-.dd-menu{position:static;box-shadow:none;border:0;padding:0 0 8px 12px;min-width:0}
-.dd-menu a{font-size:1.05rem;color:var(--muted)}
-.nav-cta{margin:auto 0 0;text-align:center;width:100%}
-.nav-cta-wrap{margin-top:auto;padding-top:24px}
-}
-/* lines page */
-:root{--tile:#c5d4ea;--tile-ink:#134590}
-@media (prefers-color-scheme:dark){:root{--tile:#16294a;--tile-ink:#7aa7ee}}
-.section-title{text-align:center;font-size:clamp(2rem,5vw,2.8rem);margin:56px 0 8px}
-.lines-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin:28px 0 24px}
-.line-card{background:var(--bg);border:1.5px solid var(--tile);border-radius:28px;padding:32px}
-.line-icon{width:72px;height:72px;border-radius:18px;background:var(--tile);color:var(--tile-ink);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;margin-bottom:20px}
-.line-icon svg{width:40px;height:40px;fill:currentColor}
-.line-card h3{margin:0 0 12px;font-size:1.3rem}
-.line-card p{margin:0;color:var(--muted)}
-.line-card a{color:var(--tile-ink);font-weight:700}
+/* City Metro: home-page Trip Planner + Service Status, and the /trip results page.
+   Edit the settings below. Nothing here touches the Workers' own code. */
+(() => {
+  'use strict';
+  const CFG = {
+    TRIP_API: 'https://api.trip-planner.citymetro.xyz',
+    ALERTS_API: 'https://ride-metro.felixfeger46.workers.dev',
+    ALERTS_SITE: 'https://alerts.citymetro.xyz',
+    LINE_URL: 'https://alerts.citymetro.xyz/lines/line?id=',   // + the line's slug (a, b, 76 ...)
+    TRIP_SITE: 'https://trip-planner.citymetro.xyz',
+    PLANNER_LINE_URL: 'https://trip-planner.citymetro.xyz/?line=',   // bus route search opens this + the route (e.g. 111)
+    PLANNED_URL: 'https://alerts.citymetro.xyz',   // "Planned Service Changes" row
+    ACCESS_URL: 'https://alerts.citymetro.xyz',    // "Elevator & Escalator Status" row
+    // Optional: put your own copies of the rail line images on this site (e.g. /img/lines/a.svg or a.png, named by the line's slug)
+    // and set this to '/img/lines/'. They are tried first, then the image from the database. Leave '' to use the database images only.
+    LOCAL_IMG_DIR: 'https://citymetro.xyz/img/lines/',
+    PLANNER_URL: 'https://trip-planner.citymetro.xyz/planner',   // opened as ?from=<station id>&to=<station id>
+    PLANNER_HOME: 'https://trip-planner.citymetro.xyz',
+    // Which field on each alerts line says "rail", "bus" or "accessibility". Tried in this order.
+    KIND_FIELDS: ['type', 'category', 'kind', 'mode', 'group'],
+    REFRESH_MS: 60000
+  };
 
-.footer-note{margin:16px 0 0;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:.9rem;text-align:center}
-.big{font-size:1.5rem;font-weight:700;color:var(--text);margin:0 0 8px}
-.emergency{border-color:var(--blue);border-width:2.5px}
-.lead{max-width:720px;margin:0 auto;text-align:center;color:var(--muted);font-size:1.15rem}
-.center{text-align:center}
-/* home */
-.hero-home{padding:80px 0 40px;background:linear-gradient(180deg,var(--card),var(--bg))}
-.hero-home h1{font-size:clamp(3rem,9vw,5.5rem);line-height:1;margin:0 0 20px;font-weight:400;letter-spacing:-.02em}
-.hero-home p{font-size:1.3rem;max-width:640px;color:var(--muted);margin:0 0 28px}
-.btn-row{display:flex;flex-wrap:wrap;gap:12px}
-.btn.ghost{background:transparent;color:var(--text);border:2px solid var(--blue)}
-.btn.ghost:hover{background:var(--card)}
-.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:40px}
-.quick a{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--bg);border:1.5px solid var(--tile);border-radius:18px;text-decoration:none;font-weight:700}
-.quick a:hover{border-color:var(--blue)}
-.quick .line-icon{width:44px;height:44px;border-radius:12px;margin:0;flex:none}
-.quick .line-icon svg{width:24px;height:24px}
-.sec{padding:56px 0 8px}
-.sec-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:8px}
-.sec-head h2{margin:0;font-size:clamp(1.6rem,4vw,2.2rem)}
-.sec-head a{font-weight:700;color:var(--tile-ink)}
-.promos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.promo{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:36px}
-.promo h2{margin:0 0 10px;font-size:1.7rem}
-.promo p{color:var(--muted);margin:0 0 20px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:56px 0 0;text-align:center}
-.stat{padding:24px 12px;border-radius:20px;background:var(--card)}
-.stat b{display:block;font-size:2.4rem;line-height:1.1;color:var(--tile-ink)}
-.stat span{color:var(--muted)}
-.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tile-ink);margin-bottom:8px}
-.cta-band{margin:64px 0;background:var(--blue);color:#fff;border-radius:28px;padding:48px 32px;text-align:center}
-.cta-band h2{margin:0 0 8px}
-.cta-band p{margin:0 0 20px;opacity:.9}
-.cta-band .btn{background:#fff;color:var(--blue)}
-.faq details{border-bottom:1px solid var(--line);padding:14px 0}
-.faq summary{cursor:pointer;font-weight:700}
-.faq p{margin:8px 0 0;color:var(--muted)}
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  function el(tag, props = {}, ...kids) {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) {
+      if (v == null || v === false) continue;
+      if (k === 'class') n.className = v;
+      else if (k === 'text') n.textContent = v;
+      else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+      else n.setAttribute(k, v === true ? '' : v);
+    }
+    for (const kid of kids.flat()) if (kid != null && kid !== false) n.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+    return n;
+  }
+  function svgIcon(d) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('aria-hidden', 'true');
+    const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); s.append(p); return s;
+  }
+  async function fetchJson(url) {
+    const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 12000);
+    try {
+      const res = await fetch(url, { signal: ctl.signal, headers: { Accept: 'application/json' } });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      return data;
+    } finally { clearTimeout(t); }
+  }
 
-/* split item: label is a link, arrow opens the dropdown */
-.split{display:flex;align-items:center}
-.split .nav-link{padding-right:4px}
-.split .dd-toggle{padding:10px 10px 10px 4px}
-@media (max-width:900px){
-.split{flex-wrap:wrap}
-.split .nav-link{flex:1;width:auto}
-.split .dd-toggle{width:auto;padding:18px 12px}
-.split .dd-menu{width:100%}
-}
+  /* ---------- badges ---------- */
+  function textOn(bg) {
+    const m = /^#?([0-9a-f]{6}|[0-9a-f]{3})$/i.exec(String(bg || '').trim());
+    if (!m) return '#fff';
+    let h = m[1]; if (h.length === 3) h = [...h].map(c => c + c).join('');
+    const [r, g, b] = [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16));
+    return (r * 299 + g * 587 + b * 114) / 1000 > 150 ? '#000' : '#fff';
+  }
+  function shortName(l) {
+    const s = String(l.name || l.id || '?').trim().replace(/^(line|route)\s+/i, '').replace(/\s+(line|route)$/i, '').trim();
+    return s.length <= 3 ? s : s.charAt(0).toUpperCase();
+  }
+  // Line images load quietly in the background: the letter/number shows straight away, the picture replaces it
+  // once it has really loaded, and a failed load is retried (a busy image host sometimes refuses a burst of
+  // requests right after a page reload). If it never loads, the letter simply stays.
+  const bust = u => u + (u.includes('?') ? '&' : '?') + 'r=' + Date.now();
+  function loadImage(urls, onOk, onFail) {
+    const list = urls.filter(Boolean); if (!list.length) return;
+    // Try each address once, then once more (slightly later, with a fresh address) in case the host was briefly busy.
+    const seq = [...list.map(u => ({ u, d: 0 })), ...list.map(u => ({ u, d: 1500, retry: true }))];
+    let i = 0;
+    const next = () => {
+      if (i >= seq.length) { console.warn('City Metro: line image did not load:', list.join(' | ')); if (onFail) onFail(); return; }
+      const { u, d, retry } = seq[i++];
+      setTimeout(() => {
+        const im = new Image(); im.alt = '';
+        im.onload = () => onOk(im); im.onerror = next;
+        im.src = retry ? bust(u) : u;
+      }, d);
+    };
+    next();
+  }
+  function badge(l, { small = false, href = null, title = null } = {}) {
+    const bg = l.color || '#64748b';
+    const node = el(href ? 'a' : 'span', { class: 'lb' + (small ? ' sm' : ''), href, title: title || l.name || null, 'aria-label': title || l.name || null }, shortName(l));
+    node.style.background = bg; node.style.color = l.text_color || textOn(bg);
+    if (l.iconUrl) {
+      node.classList.add('img-pending');
+      loadImage(l.iconUrls || [l.iconUrl], im => { node.replaceChildren(im); node.classList.remove('img-pending'); }, () => node.classList.remove('img-pending'));
+    }
+    return node;
+  }
 
-/* ---- fixes & v3 ---- */
-.btn{display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--blue);line-height:1.2;padding:12px 30px;min-height:48px;text-align:center}
-a.btn{color:var(--btn-text);text-decoration:none}
-a.btn.ghost{background:transparent;color:var(--text);border-color:var(--blue)}
-a.btn.ghost:hover{background:var(--card)}
-.cta-band a.btn{background:#fff;color:var(--blue);border-color:#fff}
-.nav-cta{min-height:44px;padding:8px 22px}
-@media (min-width:901px){.nav{display:flex;align-items:center;gap:8px}.nav-cta-wrap{margin:0 0 0 8px;padding:0}}
-.line-icon svg[viewBox="0 0 100 100"]{width:46px;height:46px}
-/* big image hero */
-.hero-img{position:relative;min-height:min(80vh,680px);display:flex;align-items:flex-end;color:#fff;background:#0d2a5f url(https://police.citymetro.xyz/hero.svg) center/cover no-repeat}
-.hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,18,45,.78),rgba(6,18,45,.3) 60%,transparent),linear-gradient(0deg,rgba(6,18,45,.5),transparent 45%)}
-.hero-img .container{position:relative;width:100%;padding-top:96px;padding-bottom:72px}
-.hero-img h1{font-size:clamp(3rem,9vw,5.8rem);line-height:1;margin:0 0 18px;font-weight:400;letter-spacing:-.02em}
-.hero-img p{font-size:1.3rem;max-width:620px;margin:0 0 28px;color:#e8eefb}
-.hero-img a.btn.ghost{color:#fff;border-color:#fff}
-.hero-img a.btn.ghost:hover{background:rgba(255,255,255,.15)}
-.quick{margin:32px 0 0}
-/* about */
-.crumbs{padding:28px 0 0;color:var(--muted);font-size:.95rem}
-.crumbs a{color:var(--tile-ink)}
-.about-title{font-size:clamp(2.2rem,6vw,3.4rem);margin:12px 0 12px}
-.measure{max-width:760px}
-.about-img{border-radius:28px;aspect-ratio:21/9;min-height:220px;background:#0d2a5f url(https://police.citymetro.xyz/hero.svg) 60% center/cover;border:1px solid var(--line);margin:32px 0}
-.h2{font-size:clamp(1.6rem,4vw,2.2rem);margin:56px 0 12px}
-.tl-item{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
-.tl-item:last-child{border-bottom:1px solid var(--line)}
-.tl-year{font-size:1.9rem;font-weight:700;color:var(--tile-ink);line-height:1.2}
-.tl-item h3{margin:0 0 6px}.tl-item p{margin:0;color:var(--muted)}
-@media (max-width:600px){.tl-item{grid-template-columns:1fr;gap:4px}}
-.line-card.plain p a{font-weight:700}
+  /* ---------- stations + plan form (home and /trip) ---------- */
+  let stationsP = null;
+  const getStations = () => (stationsP ||= fetchJson(CFG.TRIP_API + '/api/stations').catch(e => { stationsP = null; throw e; }));
+  function findStation(list, q) {
+    q = String(q || '').trim().toLowerCase(); if (!q) return null;
+    if (/^\d+$/.test(q)) { const s = list.find(x => String(x.id) === q); if (s) return s; }
+    const exact = list.find(s => s.name.toLowerCase() === q); if (exact) return exact;
+    for (const test of [s => s.name.toLowerCase().startsWith(q), s => s.name.toLowerCase().includes(q)]) {
+      const hits = list.filter(test); if (hits.length === 1) return hits[0];
+    }
+    return null;
+  }
+  // ---- "similar name" matching for the suggestion list ----
+  const norm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+  function lev(a, b) {
+    if (!a.length) return b.length; if (!b.length) return a.length;
+    let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      const cur = [i];
+      for (let j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      prev = cur;
+    }
+    return prev[b.length];
+  }
+  function scoreStation(name, q) {
+    const n = norm(name); if (!n || !q) return 0;
+    if (n === q) return 100;
+    if (n.startsWith(q)) return 90;
+    const words = n.split(' ');
+    if (words.some(w => w.startsWith(q))) return 80;
+    if (n.includes(q)) return 70;
+    if (q.split(' ').every(t => n.includes(t))) return 60;
+    const qc = q.replace(/ /g, ''); let i = 0;
+    for (const ch of n) if (ch === qc[i]) i++;
+    if (qc.length >= 3 && i === qc.length) return 40;                       // letters in order, e.g. "dtlc"
+    const d = Math.min(lev(n, q), ...words.map(w => lev(w, q)));            // typos, e.g. "unoin station"
+    const lim = q.length <= 4 ? 1 : Math.min(4, Math.round(q.length * 0.25));
+    return d <= lim ? 30 - d : 0;
+  }
+  function suggest(list, q, max = 8) {
+    const nq = norm(q);
+    const byName = (x, y) => x.name.localeCompare(y.name);
+    if (!nq) return list.slice().sort(byName).slice(0, max);
+    return list.map(s => ({ s, sc: scoreStation(s.name, nq) })).filter(x => x.sc > 0)
+      .sort((x, y) => y.sc - x.sc || byName(x.s, y.s)).slice(0, max).map(x => x.s);
+  }
+  function attachSuggest(input) {
+    const ul = el('ul', { class: 'sugg', role: 'listbox', id: 'sugg-' + input.name, hidden: true });
+    input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list');
+    input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-controls', ul.id);
+    input.closest('.field').append(ul);
+    let items = [], active = -1;
+    const hide = () => { ul.hidden = true; active = -1; input.setAttribute('aria-expanded', 'false'); };
+    const choose = s => { input.value = s.name; input.dataset.id = s.id; hide(); };
+    const paint = () => [...ul.children].forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
+    async function show() {
+      let list; try { list = await getStations(); } catch { return hide(); }
+      const count = {}; list.forEach(s => { count[s.name] = (count[s.name] || 0) + 1; });
+      items = suggest(list, input.value);
+      ul.replaceChildren(...items.map(s => {
+        const sub = s.street || (count[s.name] > 1 ? `Station ${s.id}` : '');
+        const li = el('li', { role: 'option', 'aria-selected': 'false' }, el('span', { class: 'sg-name', text: s.name }), sub ? el('span', { class: 'sg-sub', text: sub }) : null);
+        li.addEventListener('mousedown', e => { e.preventDefault(); choose(s); });   // keep the field focused until chosen
+        return li;
+      }));
+      active = -1; ul.hidden = !items.length; input.setAttribute('aria-expanded', String(items.length > 0));
+    }
+    input.addEventListener('input', () => { delete input.dataset.id; show(); });
+    input.addEventListener('focus', show);
+    input.addEventListener('blur', hide);
+    input.addEventListener('keydown', e => {
+      if (ul.hidden) { if (e.key === 'ArrowDown') show(); return; }
+      if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % items.length; paint(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + items.length) % items.length; paint(); }
+      else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); choose(items[active]); }
+      else if (e.key === 'Escape') hide();
+    });
+  }
+  async function initPlanForm() {
+    const form = $('#plan-form'); if (!form) return;
+    const msg = $('#plan-msg');
+    const say = (...nodes) => { if (msg) msg.replaceChildren(...nodes.filter(Boolean)); };
+    const { from, to } = form.elements;
+    attachSuggest(from); attachSuggest(to);
+    $('#plan-swap')?.addEventListener('click', () => {
+      [from.value, to.value] = [to.value, from.value];
+      const f = from.dataset.id, t = to.dataset.id;
+      delete from.dataset.id; delete to.dataset.id;
+      if (t) from.dataset.id = t; if (f) to.dataset.id = f;
+    });
+    // Look both stations up in the trip planner's database (by id), then open the planner on that journey.
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); say();
+      let stations;
+      try { stations = await getStations(); } catch { location.href = CFG.PLANNER_HOME; return; }
+      const resolve = input => {
+        const byId = input.dataset.id && stations.find(s => String(s.id) === input.dataset.id);
+        return byId && byId.name === input.value ? byId : findStation(stations, input.value);
+      };
+      const a = resolve(from), b = resolve(to);
+      const bad = !a ? from : !b ? to : null;
+      if (bad) {
+        const alts = suggest(stations, bad.value, 4);
+        say(`We couldn’t find “${bad.value.trim()}”.${alts.length ? ' Did you mean:' : ' Pick a station from the suggestions.'}`,
+          ...alts.map(s => el('button', { type: 'button', class: 'sugg-btn', text: s.name, onclick: () => { bad.value = s.name; bad.dataset.id = s.id; say(); } })));
+        return;
+      }
+      if (a.id === b.id) return say('Choose a different destination.');
+      location.href = `${CFG.PLANNER_URL}?from=${encodeURIComponent(a.id)}&to=${encodeURIComponent(b.id)}`;
+    });
+  }
 
-/* logo pulls from /logo.png */
-.logo{width:auto;height:auto;border:0;border-radius:0;padding:0;font-size:inherit}
-.logo img{display:block;height:44px;width:auto}
+  /* ---------- Service Status (home) ---------- */
+  const GROUPS = [['emergency', 'Emergency'], ['critical', 'Critical Disruptions'], ['major_outage', 'Major Disruptions'],
+                  ['degraded', 'Delays'], ['maintenance', 'Planned Work'], ['operational', 'No Active Alerts']];
+  function kindOf(l) {
+    for (const f of CFG.KIND_FIELDS) {
+      const v = l[f];
+      if (typeof v === 'string' && v.trim()) {
+        const s = v.toLowerCase();
+        if (/bus/.test(s)) return 'bus';
+        if (/access|elevator|escalator|ada/.test(s)) return 'accessibility';
+        if (/rail|train|metro|subway|light|tram|rapid/.test(s)) return 'rail';
+      }
+    }
+    const name = String(l.name || '').toLowerCase().trim();
+    if (/access|elevator|escalator/.test(name + ' ' + String(l.id || '').toLowerCase())) return 'accessibility';
+    if (/\bbus\b/.test(name) || /^(line|route)?\s*\d+[a-z]?\b/.test(name)) return 'bus';
+    return 'rail';
+  }
+  // The line page uses a short slug, not the database id: "A Line" -> a, "Line 76" -> 76.
+  function slugOf(l) {
+    if (l.slug) return String(l.slug);
+    const n = String(l.name || l.id || '').trim().toLowerCase().replace(/\s*\(.*\)\s*$/, '').replace(/^(line|route)\s+/, '').replace(/\s+(line|route)\b.*$/, '').trim();
+    return n.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || String(l.id);
+  }
+  const lineUrl = l => CFG.LINE_URL + encodeURIComponent(slugOf(l));
+  const IMG_FIELDS = ['iconUrl', 'icon', 'iconURL', 'imageUrl', 'image_url', 'image', 'logoUrl', 'logo'];
+  function pickImage(l, base) {
+    for (const f of IMG_FIELDS) {
+      const v = l[f];
+      if (typeof v === 'string' && v.trim()) { try { return new URL(v.trim(), base).href; } catch { /* try the next field */ } }
+    }
+    return null;
+  }
+  const fmtWhen = iso => iso ? new Date(iso).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles' }) + ' PT' : '';
+  const cap = s => String(s || '').charAt(0).toUpperCase() + String(s || '').slice(1);
+  const trim = (s, n) => { s = String(s || ''); return s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s; };
 
-/* dark mode: turn the black logo white */
-@media (prefers-color-scheme:dark){.logo img{filter:brightness(0) invert(1)}}
-/* 404 */
-.nf-img{border-radius:28px;aspect-ratio:2/1;min-height:220px;max-height:420px;background:#0d2a5f url(https://police.citymetro.xyz/404.svg) center/cover no-repeat;border:1px solid var(--line);margin:40px 0 32px}
-.nf{text-align:center;padding-bottom:72px}
-.nf h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:0 0 8px}
-.nf p{color:var(--muted);font-size:1.15rem;margin:0 auto 24px;max-width:520px}
-.nf .btn-row{justify-content:center}
+  function initStatus() {
+    const body = $('#status-body'); if (!body) return;
+    let kind = 'rail', data = null;
+    const tabs = $$('.status-panel [role="tab"]');
+    const pick = t => { kind = t.dataset.kind; tabs.forEach(x => { x.setAttribute('aria-selected', String(x === t)); x.tabIndex = x === t ? 0 : -1; }); render(); };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => pick(t));
+      t.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length]; pick(n); n.focus();
+      });
+    });
 
-/* utility classes (replace inline styles so CSP can drop unsafe-inline) */
-.u-font-size-1-2rem-color-var-muted{font-size:1.2rem;color:var(--muted)}
-.u-margin-0-auto-64px{margin:0 auto 64px}
-.u-margin-16px-0{margin:16px 0}
-.u-margin-16px-0-64px{margin:16px 0 64px}
-.u-margin-28px-0-64px{margin:28px 0 64px}
-.u-margin-top-0{margin-top:0}
-.u-text-align-center-margin-32px-0-64px{text-align:center;margin:32px 0 64px}
+    // If the alerts list has the same line twice (same name/slug), show it once, using the more serious status.
+    const RANK = { emergency: 5, critical: 4, major_outage: 3, degraded: 2, maintenance: 1, operational: 0 };
+    function dedupe(list) {
+      const out = [], at = new Map(), dup = [];
+      for (const l of list) {
+        const k = slugOf(l);
+        if (!at.has(k)) { at.set(k, out.length); out.push(l); continue; }
+        dup.push(l.id); const j = at.get(k);
+        if ((RANK[l.status] || 0) > (RANK[out[j].status] || 0)) out[j] = l;
+      }
+      if (dup.length) console.info('City Metro: duplicate line entries hidden (ids):', dup.join(', '));
+      return out;
+    }
 
-/* legal pages */
-.legal-doc h2{font-size:1.3rem}
-.legal-doc h3{margin:26px 0 4px}
-.legal-doc ul{padding-left:1.3rem}
-.legal-doc li{margin:6px 0}
+    function preview(all) {
+      const ids = new Set(all.filter(l => kindOf(l) === kind).map(l => l.id));
+      const sysWide = i => (!(i.affectedLines || []).length && !(i.affectedWaypoints || []).length) ||
+        (all.length > 0 && all.every(l => (i.affectedLines || []).includes(l.id)));
+      const touches = i => sysWide(i) || (i.affectedLines || []).some(id => ids.has(id));
+      const sev = { emergency: 4, critical: 3, major: 2, minor: 1 };
+      const inc = (data.inc || []).filter(i => i.status !== 'resolved' && touches(i))
+        .sort((a, b) => (sev[b.level] || 0) - (sev[a.level] || 0) || new Date(b.updatedAt) - new Date(a.updatedAt))
+        .map(i => ({ ...i, _level: i.level || 'minor', _tag: cap(i.level || 'minor') + ' incident', _when: 'Updated ' + fmtWhen(i.updatedAt) }));
+      const mnt = (data.mnt || []).filter(m => (m.status === 'in_progress' || m.status === 'scheduled') && touches(m))
+        .sort((a, b) => a.status === b.status ? new Date(a.startTime) - new Date(b.startTime) : a.status === 'in_progress' ? -1 : 1)
+        .map(m => ({ ...m, _level: 'maintenance', _tag: m.status === 'in_progress' ? 'Maintenance in progress' : 'Scheduled maintenance',
+          _when: m.status === 'in_progress' ? 'Ends ' + fmtWhen(m.endTime) : 'Starts ' + fmtWhen(m.startTime) }));
+      const items = [...inc, ...mnt]; if (!items.length) return null;
+      const cards = items.slice(0, 3).map(i => {
+        const affected = (i.affectedLines || []).map(id => all.find(l => l.id === id)).filter(Boolean);
+        const href = affected[0] ? lineUrl(affected[0]) : CFG.ALERTS_SITE;
+        return el('article', { class: 'pv' },
+          el('div', { class: 'pv-top' }, el('span', { class: 'pill', 'data-level': i._level, text: i._tag }), el('span', { class: 'pv-when', text: i._when })),
+          el('h4', {}, el('a', { href, text: i.title || 'Service alert' })),
+          i.description ? el('p', { text: trim(i.description, 140) }) : null,
+          affected.length ? (kind === 'bus' ? el('p', { class: 'pv-lines', text: affected.map(l => l.name).join(', ') })
+            : el('div', { class: 'lbs' }, affected.slice(0, 8).map(l => badge(l, { small: true, href: lineUrl(l), title: l.name })))) : null);
+      });
+      return el('section', { class: 'st-preview' }, el('h3', { text: 'Alerts preview' }), cards,
+        items.length > 3 ? el('p', { class: 'st-more' }, el('a', { href: CFG.ALERTS_SITE, text: `+${items.length - 3} more alert${items.length - 3 > 1 ? 's' : ''}` })) : null);
+    }
 
-/* fares + safety v4 */
-.lead-left{font-size:1.2rem;color:var(--muted)}
-.fare-feature{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;margin-top:20px}
-.fare-hero{background:var(--blue);color:#fff;border-radius:28px;padding:40px;display:flex;flex-direction:column;justify-content:center}
-.fare-hero-icon svg{width:44px;height:44px;fill:#fff}
-.fare-label{margin:16px 0 0;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.9}
-.fare-price{margin:0;font-size:clamp(3.5rem,10vw,6rem);font-weight:700;line-height:1.05}
-.fare-sub{margin:8px 0 0;font-size:1.1rem;opacity:.95}
-.fare-stack{display:grid;gap:20px}
-.fare-card{display:flex;gap:20px;align-items:center;background:var(--bg);border:1.5px solid var(--tile);border-radius:28px;padding:28px}
-.fare-card .line-icon{margin:0;flex:none}
-.fare-card h3{margin:0}
-.fare-card p{margin:2px 0 0;color:var(--muted)}
-.fare-card .big{color:var(--text);margin:2px 0}
-@media (max-width:800px){.fare-feature{grid-template-columns:1fr}}
-.hero-img.short{min-height:min(60vh,440px)}
-.hero-img.short h1{font-size:clamp(2.4rem,7vw,4.2rem)}
-.line-card ul{margin:0;padding-left:1.2rem;color:var(--muted)}
-.line-card li{margin:4px 0}
-.end{margin:28px 0 8px}
-.end-space{height:64px}
-.center-row{justify-content:center}
-.cta-band .btn-row a.btn{min-width:160px}
-.faq.measure{margin-bottom:8px}
+    const SEARCH = 'M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z';
+    const CHEV = 'M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z';
+    let busQuery = '';
+    // "Find and Track Buses": type a route number and go straight to that line's page.
+    function busSearch(all) {
+      // Routes we know about: bus lines from the alerts list (with their status) plus bus lines from the trip planner's database.
+      const known = [...all.filter(l => kindOf(l) === 'bus'), ...((data.trip || []).filter(x => String(x.type || '').toLowerCase() === 'bus'))];
+      const routes = [], seen = new Set();
+      for (const l of known) { const s = slugOf(l); if (!seen.has(s)) { seen.add(s); routes.push({ name: l.name || s, slug: s, status: l.status }); } }
+      const statusLabel = s => (GROUPS.find(g => g[0] === s) || [])[1] || '';
+      const go = r => { location.href = CFG.PLANNER_LINE_URL + encodeURIComponent(r.slug); };
 
-/* transit hub: Plan a Trip + Service Status */
-.hub-wrap{position:relative;z-index:2;margin-top:-36px}
-.hub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px;align-items:start}
-.hub-panel{border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.12);background:var(--bg);border:1px solid var(--line)}
-.hub-head{padding:20px 24px}
-.hub-head h2{margin:0;font-size:1.7rem}
-.hub-body{padding:20px 24px 24px}
-.plan-panel{background:var(--blue);color:#fff;border-color:var(--blue)}
-.plan-panel .hub-head{border-bottom:2px solid #fff}
-.plan-panel .hub-body{display:flex;flex-direction:column;gap:14px}
-.field{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.16);border-radius:12px;padding:0 16px;min-height:54px}
-.field span{font-weight:700;min-width:46px}
-.field input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;font:inherit;padding:14px 0}
-.field input::placeholder{color:rgba(255,255,255,.75)}
-.field:focus-within{outline:2px solid #fff}
-.swap{align-self:flex-end;display:flex;align-items:center;justify-content:center;width:40px;height:40px;margin:-6px 0;border-radius:50%;border:2px solid rgba(255,255,255,.7);background:transparent;color:#fff;cursor:pointer}
-.swap:hover{background:rgba(255,255,255,.16)}
-.swap svg{width:22px;height:22px;fill:currentColor}
-.pref{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700}
-.pref select{background:rgba(255,255,255,.16);color:#fff;border:0;border-radius:10px;padding:10px 12px;min-height:44px;font:inherit}
-.pref select option{color:#000}
-.btn-light{min-height:52px;border:0;border-radius:12px;background:#fff;color:var(--blue);font:inherit;font-weight:700;cursor:pointer}
-.btn-light:hover{background:#e8effa}
-.status-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;padding-bottom:0;border-bottom:2px solid var(--blue)}
-.tabs{display:flex;gap:4px}
-.tab{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:84px;padding:8px 16px;border:0;border-radius:10px 10px 0 0;background:transparent;color:var(--tile-ink);font:inherit;font-weight:700;cursor:pointer}
-.tab svg{width:26px;height:26px;fill:currentColor}
-.tab[aria-selected="true"]{background:var(--blue);color:#fff}
-.st-msg{color:var(--muted);margin:8px 0}
-.st-group{padding:14px 0;border-top:1px solid var(--line)}
-.st-group:first-child{border-top:0;padding-top:0}
-.st-group h3{margin:0 0 10px;font-size:1.05rem;color:var(--tile-ink)}
-.lbs{display:flex;flex-wrap:wrap;gap:10px}
-.lb{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;overflow:hidden;font-weight:700;font-size:1.05rem;line-height:1;text-decoration:none;box-shadow:0 1px 4px rgba(0,0,0,.25)}
-.lb img{width:100%;height:100%;object-fit:cover}
-a.lb:hover,a.lb:focus-visible{transform:scale(1.08);outline:2px solid var(--blue);outline-offset:2px}
-.lb.sm{width:30px;height:30px;font-size:.8rem}
-.st-preview{margin-top:8px;padding-top:16px;border-top:1px solid var(--line)}
-.st-preview h3{margin:0 0 10px;font-size:1.05rem;color:var(--tile-ink)}
-.pv{border:1.5px solid var(--tile);border-radius:16px;padding:14px 16px;margin-bottom:12px}
-.pv-top{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
-.pv h4{margin:8px 0 4px;font-size:1.02rem}
-.pv h4 a{text-decoration:none}
-.pv h4 a:hover{text-decoration:underline}
-.pv p{margin:0 0 10px;color:var(--muted);font-size:.95rem}
-.pv-when{color:var(--muted);font-size:.85rem}
-.pill{display:inline-block;padding:2px 10px;border-radius:999px;background:#64748b;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
-.pill[data-level="emergency"]{background:#7f1d1d}.pill[data-level="critical"]{background:#dc2626}
-.pill[data-level="major"]{background:#ea580c}.pill[data-level="minor"]{background:#ca8a04}
-.pill[data-level="maintenance"]{background:#7c3aed}
-.st-more{margin:0 0 8px}
-.st-foot{margin:18px 0 0}
-@media (max-width:800px){
-.hub-wrap{margin-top:-24px}
-.hub{grid-template-columns:1fr;gap:0;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.12);border:1px solid var(--line)}
-.hub-panel{border-radius:0;box-shadow:none;border:0}
-}
-/* trip results */
-.trip-form-panel{max-width:640px;margin:24px 0 8px}
-.trip-route{margin:28px 0 14px;font-size:clamp(1.4rem,4vw,2rem)}
-.mode-tabs{display:flex;flex-wrap:wrap;gap:10px}
-.mode-tab{padding:10px 18px;border:2px solid var(--blue);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-weight:700;cursor:pointer}
-.mode-tab[aria-selected="true"]{background:var(--blue);color:#fff}
-.trip-card{margin-top:18px;padding:26px;border:1.5px solid var(--tile);border-radius:24px;background:var(--bg)}
-.trip-sum{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px}
-.trip-time{font-size:2.6rem;font-weight:700;line-height:1}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:4px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.9rem;color:var(--muted)}
-.legs{list-style:none;margin:18px 0 0;padding:0}
-.leg{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
-.leg h3{margin:0 0 2px;font-size:1.05rem}
-.leg p{margin:0;color:var(--muted)}
-.leg-ic{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--tile);color:var(--tile-ink)}
-.leg-ic svg{width:24px;height:24px;fill:currentColor}
-.leg details{margin-top:6px;color:var(--muted)}
-.leg summary{cursor:pointer;font-weight:700;color:var(--tile-ink)}
-.stops{margin:8px 0 0;padding-left:1.3rem}
-/* footer social */
-.social{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
-.social a{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1.5px solid var(--tile);border-radius:999px;color:var(--text);font-weight:700;font-size:.92rem;text-decoration:none}
-.social a:hover{border-color:var(--blue);color:var(--tile-ink)}
-.social svg{width:18px;height:18px}
+      const input = el('input', { type: 'search', name: 'route', placeholder: 'Enter route number', autocomplete: 'off', 'aria-label': 'Route number', role: 'combobox', 'aria-autocomplete': 'list', 'aria-expanded': 'false' });
+      input.value = busQuery;
+      const list = el('ul', { class: 'sugg inline', role: 'listbox', hidden: true });
+      const msg = el('p', { class: 'bs-msg', role: 'status' });
+      const form = el('form', { class: 'bus-search', role: 'search' },
+        el('h3', { text: 'Find and Track Buses' }),
+        el('div', { class: 'bs-row' }, input, el('button', { type: 'submit', class: 'bs-go', 'aria-label': 'Search' }, svgIcon(SEARCH))), list, msg);
 
-.plan-msg{margin:0;min-height:1.2em;font-weight:700}
+      // Pop-up list of matching routes, with each route's current status.
+      let items = [], active = -1;
+      const hide = () => { list.hidden = true; active = -1; input.setAttribute('aria-expanded', 'false'); };
+      const paint = () => [...list.children].forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
+      function show() {
+        const q = norm(input.value).replace(/^(line|route) /, '');
+        const rank = r => { const nm = norm(r.name); return !q ? 1 : r.slug === q ? 100 : r.slug.startsWith(q) ? 90 : nm.includes(q) ? 70 : 0; };
+        items = routes.map(r => ({ r, s: rank(r) })).filter(x => x.s > 0)
+          .sort((x, y) => y.s - x.s || x.r.slug.localeCompare(y.r.slug, undefined, { numeric: true })).slice(0, 6).map(x => x.r);
+        list.replaceChildren(...items.map(r => {
+          const li = el('li', { role: 'option', 'aria-selected': 'false' }, el('span', { class: 'sg-name', text: r.name }), statusLabel(r.status) ? el('span', { class: 'sg-sub', text: statusLabel(r.status) }) : null);
+          li.addEventListener('mousedown', e => { e.preventDefault(); go(r); });
+          return li;
+        }));
+        active = -1; list.hidden = !items.length; input.setAttribute('aria-expanded', String(items.length > 0));
+      }
+      input.addEventListener('input', () => { busQuery = input.value; msg.textContent = ''; show(); });
+      input.addEventListener('focus', show);
+      input.addEventListener('blur', hide);
+      input.addEventListener('keydown', e => {
+        if (list.hidden) { if (e.key === 'ArrowDown') show(); return; }
+        if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % items.length; paint(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + items.length) % items.length; paint(); }
+        else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); go(items[active]); }
+        else if (e.key === 'Escape') hide();
+      });
 
-/* station suggestions */
-.field{position:relative}
-.plan-panel{overflow:visible;position:relative;z-index:5}
-.sugg{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:40;margin:0;padding:6px;list-style:none;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.25);max-height:300px;overflow-y:auto}
-.sugg[hidden]{display:none}
-.sugg li{display:flex;flex-direction:column;padding:10px 12px;border-radius:10px;cursor:pointer}
-.sugg li[aria-selected="true"],.sugg li:hover{background:var(--tile)}
-.sg-name{font-weight:700}
-.sg-sub{font-size:.85rem;color:var(--muted)}
-.plan-msg .sugg-btn{margin:6px 6px 0 0;padding:6px 12px;border:1.5px solid #fff;border-radius:999px;background:transparent;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+      form.addEventListener('submit', e => {
+        e.preventDefault(); msg.textContent = '';
+        const raw = input.value.trim().toLowerCase();
+        if (!raw) { msg.textContent = 'Enter a route number.'; return; }
+        const q = raw.replace(/^(line|route)\s+/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        const hit = routes.find(r => r.slug === q) || routes.find(r => String(r.name).toLowerCase().includes(raw));
+        if (hit) go(hit);
+        else if (!routes.length) go({ slug: q });
+        else msg.textContent = `We couldn’t find a bus route “${input.value.trim()}”.`;
+      });
+      return form;
+    }
+    const linkRows = () => el('nav', { class: 'st-links', 'aria-label': 'More service information' },
+      [['Planned Service Changes', CFG.PLANNED_URL], ['Elevator & Escalator Status', CFG.ACCESS_URL]]
+        .map(([text, href]) => el('a', { class: 'st-link', href }, el('span', { text }), svgIcon(CHEV))));
 
-/* bus search + service links */
-.bus-search{padding-bottom:14px}
-.bus-search h3{margin:0 0 10px;font-size:1.05rem;color:var(--tile-ink)}
-.bs-row{display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
-.bs-row:focus-within{border-color:var(--blue)}
-.bs-row input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:inherit;padding:14px 16px;-webkit-appearance:none;appearance:none}
-.bs-go{display:flex;align-items:center;justify-content:center;width:54px;border:0;background:var(--blue);color:#fff;cursor:pointer}
-.bs-go svg{width:22px;height:22px;fill:currentColor}
-.bs-msg{margin:8px 0 0;min-height:1.2em;color:var(--muted)}
-.st-links{margin-top:14px;border-top:1px solid var(--line)}
-.st-link{display:flex;align-items:center;justify-content:space-between;padding:16px 4px;border-bottom:1px solid var(--line);color:var(--tile-ink);font-weight:700;text-decoration:none}
-.st-link:hover span{text-decoration:underline}
-.st-link svg{width:22px;height:22px;fill:currentColor}
-.pv .pv-lines{margin:0;font-weight:700;color:var(--text);font-size:.9rem}
-.sugg.inline{position:static;margin:8px 0 0;max-height:260px;box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:auto}
+    function render() {
+      if (!data) return;
+      if (body.contains(document.activeElement) && document.activeElement.matches('input')) return;
+      const all = data.lines, mine = dedupe(all.filter(l => kindOf(l) === kind));
+      const known = new Set(GROUPS.map(g => g[0]));
+      const groups = GROUPS.map(([key, label]) => {
+        const ls = mine.filter(l => (known.has(l.status) ? l.status : 'operational') === key);
+        return ls.length ? el('section', { class: 'st-group' }, el('h3', { text: label }),
+          el('div', { class: 'lbs' }, ls.map(l => badge(l, { href: lineUrl(l), title: `${l.name}: ${label}` })))) : null;
+      });
+      body.replaceChildren(...[
+        kind === 'bus' ? busSearch(all) : null,
+        ...(kind === 'bus' ? [] : (mine.length ? groups : [el('p', { class: 'st-msg', text: `No ${kind} lines to show yet.` })])),
+        preview(all),
+        linkRows(),
+        el('p', { class: 'st-foot' }, el('a', { class: 'btn ghost', href: CFG.ALERTS_SITE, text: 'View all alerts' }))
+      ].filter(Boolean));
+    }
 
-/* ride / rail / bus pages */
-.line-card ol{margin:0;padding-left:1.2rem;color:var(--muted)}
-.line-card ul{margin:0;padding-left:1.2rem;color:var(--muted)}
-.line-card li{margin:6px 0}
-.card-links{margin:12px 0 0}
-.card-links a{font-weight:700;color:var(--tile-ink)}
-.split-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin:24px 0}
-.about-img + .btn-row{margin-top:-8px}
+    async function load() {
+      try {
+        const [st, inc, mnt, trip] = await Promise.all([
+          fetchJson(CFG.ALERTS_API + '/api/status'),
+          fetchJson(CFG.ALERTS_API + '/api/incidents').catch(() => []),
+          fetchJson(CFG.ALERTS_API + '/api/maintenance').catch(() => []),
+          fetchJson(CFG.TRIP_API + '/api/lines').catch(() => [])]);
+        // Line images: the alerts line's own image first, otherwise the same line's image from the trip planner database.
+        const tripImg = {};
+        (Array.isArray(trip) ? trip : []).forEach(x => { const u = pickImage(x, CFG.TRIP_SITE); if (u) { tripImg[slugOf(x)] = u; tripImg[String(x.id).toLowerCase()] = u; } });
+        const lines = st.lineStatuses || [];
+        // Rail lines use their picture; bus lines always show their number.
+        lines.forEach(l => {
+          l.iconUrl = kindOf(l) === 'bus' ? null : (pickImage(l, CFG.ALERTS_SITE) || tripImg[slugOf(l)] || tripImg[String(l.id).toLowerCase()] || null);
+          // Your own copies first (/img/lines/a.svg, then a.png), then the database image.
+          const s = encodeURIComponent(slugOf(l));
+          l.iconUrls = kindOf(l) === 'bus' ? null
+            : [...(CFG.LOCAL_IMG_DIR ? [CFG.LOCAL_IMG_DIR + s + '.svg', CFG.LOCAL_IMG_DIR + s + '.png'] : []), l.iconUrl].filter(Boolean);
+          l.iconUrl = l.iconUrls && l.iconUrls.length ? l.iconUrls[0] : null;
+        });
+        data = { lines, inc: Array.isArray(inc) ? inc : [], mnt: Array.isArray(mnt) ? mnt : [], trip: Array.isArray(trip) ? trip : [] };
+        render();
+      } catch {
+        if (!data) body.replaceChildren(el('p', { class: 'st-msg' }, 'Service status is unavailable right now. ', el('a', { href: CFG.ALERTS_SITE, text: 'Check alerts.citymetro.xyz' })));
+      }
+    }
+    load();
+    setInterval(() => { if (!document.hidden) load(); }, CFG.REFRESH_MS);
+  }
 
-/* ---- Union Station additions ---- */
-.op-strip{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
-.op-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);color:#fff;font-weight:700;font-size:.95rem;text-decoration:none}
-.op-pill:hover{background:rgba(255,255,255,.28)}
-.op-dot{width:12px;height:12px;border-radius:50%;background:#fff;flex:none}
-.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--op);margin-right:8px}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:24px 0 8px}
-.table-wrap{overflow-x:auto;margin:20px 0}
-table.t{width:100%;border-collapse:collapse;min-width:520px}
-table.t th,table.t td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line)}
-table.t th{background:var(--card);font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.hub-single{max-width:640px}
-.hub-single .hub-panel{overflow:visible}
-
-/* departure board */
-.board{background:#07122b;color:#fff;border-radius:24px;padding:20px 22px 18px;box-shadow:0 10px 30px rgba(0,0,0,.18);margin:20px 0}
-.board-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding-bottom:14px;border-bottom:2px solid rgba(255,255,255,.85)}
-.board-head h3{margin:0;font-size:1.3rem}
-.board-clock{font-variant-numeric:tabular-nums;font-weight:700;color:#ffd27a;font-size:1.15rem}
-.board-filters{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
-.bf{padding:8px 14px;border:1.5px solid rgba(255,255,255,.5);border-radius:999px;background:transparent;color:#fff;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer}
-.bf[aria-pressed="true"]{background:#fff;color:#07122b;border-color:#fff}
-.dep{display:grid;grid-template-columns:120px minmax(0,1fr) 290px;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
-.dep:last-child{border-bottom:0}
-.dep-cols{padding:12px 0 6px;color:#a9b8d6;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;border-bottom:1px solid rgba(255,255,255,.2)}
-.dep-meta{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:center}
-.dep-cols .dep-meta{display:grid}
-.dep-time b{display:block;font-size:1.25rem;font-variant-numeric:tabular-nums}
-.dep-time s{display:block;color:#a9b8d6;font-size:.85rem}
-.dep-time small{display:block;color:#a9b8d6;font-size:.85rem}
-.dep-main{display:flex;align-items:center;gap:14px;min-width:0}
-.dep-chip{flex:none;min-width:46px;height:46px;padding:0 10px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:#fff;border:2px solid rgba(255,255,255,.35)}
-.dep-dest b{display:block;font-size:1.1rem}
-.dep-dest small{display:block;color:#a9b8d6;font-size:.88rem}
-.dep-dest .dep-note{color:#ffd27a}
-.dep-plat .dep-label{display:none}
-.dep-area{display:block;color:#a9b8d6;font-size:.8rem}
-.dep-then{color:#cfd9ee!important}
-.dep-plat b{font-size:1.15rem}
-.dep-status{display:inline-block;justify-self:start;padding:4px 12px;border-radius:999px;font-weight:700;font-size:.85rem;background:rgba(255,255,255,.12)}
-.dep-status[data-kind="ok"]{background:rgba(111,209,168,.18);color:#8fe8c0}
-.dep-status[data-kind="go"]{background:#1f9d6b;color:#fff}
-.dep-status[data-kind="warn"]{background:rgba(255,194,102,.2);color:#ffc266}
-.dep-status[data-kind="bad"]{background:rgba(255,138,138,.2);color:#ff9d9d}
-.is-cancelled .dep-time b,.is-cancelled .dep-dest b{text-decoration:line-through;opacity:.7}
-.board-empty{padding:24px 0;color:#a9b8d6;text-align:center}
-.board-foot{margin:12px 0 0;color:#a9b8d6;font-size:.88rem}
-.board-foot a{color:#fff}
-@media (max-width:700px){
-.dep-cols{display:none}
-.dep{grid-template-columns:96px minmax(0,1fr);gap:8px 12px}
-.dep-meta{grid-column:2;display:flex;align-items:center;gap:14px}
-.dep-plat .dep-label{display:inline;margin-right:6px;color:#a9b8d6}
-.dep-area{display:inline;margin-left:8px}
-.dep-plat b{font-size:1rem}
-}
-
-/* logo + operator logos (City Metro logo.png is black, so it is turned white in dark mode) */
-.logo{gap:12px}
-.logo-text{display:flex;flex-direction:column;line-height:1.05;font-weight:700;font-size:1.05rem;color:var(--text)}
-.logo-text small{font-weight:600;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-@media (max-width:420px){.logo-text{display:none}}
-.plan-note{margin:0;font-size:.85rem;opacity:.9}
-.owner-note{margin:24px 0 0;color:var(--muted);font-size:.95rem}
-/* line images in Service Status: show nothing (no letter/colour infill) until the real picture has loaded */
-.lb.img-pending{background:transparent!important;color:transparent!important;box-shadow:none}
-
-/* ---- operator colours: RSR red, City Metro white/light blue, City MetroLink blue, City Metro-North green ---- */
-.op-cm{--op:#8cc8f0;--op-text:#1a5f96;--op-bg:#e8f4fc}
-.op-rsr{--op:#c4161c;--op-text:#b3131b;--op-bg:#fbe1e3}
-.op-ml{--op:#1d5fd1;--op-text:#1d5fd1;--op-bg:#dce8fb}
-.op-mn{--op:#14803f;--op-text:#14803f;--op-bg:#d9f0e2}
-@media (prefers-color-scheme:dark){
-.op-cm{--op:#9fd3f5;--op-text:#9fd3f5;--op-bg:#12283b}
-.op-rsr{--op:#f26b72;--op-text:#ff8f95;--op-bg:#3a1317}
-.op-ml{--op:#6aa2ff;--op-text:#8db6f8;--op-bg:#14264a}
-.op-mn{--op:#4cc283;--op-text:#6fd6a0;--op-bg:#0f2e1d}}
-.op-pill.cm .op-dot{background:#9fd3f5}.op-pill.rsr .op-dot{background:#ff7b84}.op-pill.ml .op-dot{background:#6aa2ff}.op-pill.mn .op-dot{background:#5fd69a}
-.dot{background:var(--op);box-shadow:0 0 0 1px rgba(0,0,0,.12)}
-
-/* operator cards */
-.op-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:22px;margin:22px 0}
-.op-grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
-.op-card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--op-bg);border-radius:24px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.07);transition:transform .15s ease,box-shadow .15s ease}
-.op-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.12)}
-.op-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 22px;background:var(--op-bg);border-bottom:4px solid var(--op)}
-.op-logo-wrap{display:flex;align-items:center;justify-content:center;height:64px;min-width:64px;padding:8px 14px;border-radius:16px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.op-logo{display:block;height:44px;width:auto;max-width:130px;object-fit:contain}
-.op-mark{font-weight:800;font-size:1.35rem;letter-spacing:.02em;color:var(--op-text)}
-.op-rsr .op-mark{color:#b3131b}
-.op-tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--op-text);text-align:right}
-.op-body{display:flex;flex-direction:column;flex:1;padding:22px}
-.op-body h3{margin:0 0 6px;font-size:1.3rem}
-.op-body p{margin:0 0 14px;color:var(--muted)}
-.op-body ul{list-style:none;margin:0 0 16px;padding:0}
-.op-body li{position:relative;padding-left:20px;margin:8px 0;color:var(--muted)}
-.op-body li::before{content:"";position:absolute;left:2px;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--op)}
-.op-body li b{color:var(--text)}
-.op-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:auto;padding-top:6px}
-.op-links a{font-weight:700;color:var(--op-text)}
-
-/* contact + footer notices */
-.emergency{display:flex;align-items:center;gap:18px;margin:22px 0;padding:20px 24px;border-radius:20px;background:#fbe1e3;border:2px solid #c4161c;color:#4a0a0e}
-.emergency h2{margin:0 0 4px;font-size:1.25rem}.emergency p{margin:0}.emergency a{color:#4a0a0e;font-weight:700}
-.emergency .line-icon{background:#c4161c;color:#fff;flex:none}
-@media (prefers-color-scheme:dark){.emergency{background:#3a1317;border-color:#f26b72;color:#ffd9dc}.emergency a{color:#fff}.emergency .line-icon{background:#f26b72;color:#2a0a0d}}
-.legal-note{margin:14px 0 0;font-size:.85rem;opacity:.85}
-
-/* departure board: real line images + train numbers */
-.dep-chip.is-pending{background:transparent!important;border-color:transparent;color:transparent}
-.dep-chip.has-img{background:transparent!important;border:0;padding:0;min-width:46px;width:46px}
-.dep-chip img{display:block;width:46px;height:46px;object-fit:contain}
-.dep-train{color:#fff!important;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  const start = () => { initPlanForm(); initStatus(); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
