@@ -11,6 +11,8 @@
      start    first train of the day, "HH:MM" in 24-hour time. Leave out for 00:00 (12:00 AM)
    Optional:
      image    line image name, e.g. "a" loads BOARD.imageBase + "a.svg" (then a.png). If neither loads, the badge letter is shown
+     trainNumbers  [first, last] to use a fixed range of train numbers, handed out in order and starting over after the last one
+     prefix   letters before the train number. Defaults to the operator code (CM, RSR, ML, MN). Use "" for none
      via      e.g. "via Downtown and the Airport"
      area     shown under the track, e.g. "Regional Rail Area"
      service  small line under the destination (defaults to the operator name)
@@ -19,7 +21,8 @@
      delay    minutes late (with status "delayed"); all the times shown shift by this much
      note     small extra line, e.g. "Bus replacement"
 
-   Every train gets its own number (CM1234, RSR2747, ML2434, MN2444 ...), worked out automatically and the same for everyone.
+   Every train gets a number worked out automatically, the same for everyone. Without trainNumbers it is a random-looking 4-digit number
+   (RSR2747, ML2434, MN2444 ...) that is different for every train. A, E and K use fixed ranges (A 1000-1007, E 747-750, K 101-102).
    Trains run 24/7. Each day starts again at "start", then repeats every X minutes until midnight.
 */
 const BOARD = {
@@ -40,19 +43,19 @@ const OPERATORS = {
 const RSR_SERVICE = "City Metro Express, operated by Republic State Railways";
 const SERVICES = [
   // City Metro Rail
-  { op: "cm", line: "A", image: "a", dest: "Downtown Santa Mooica", via: "via Downtown and the Airport", track: "1", every: 4 },
-  { op: "cm", line: "E", image: "e", dest: "Table Central",         via: "via Downtown and the Airport", track: "2", every: 2 },
-  { op: "cm", line: "K", image: "k", dest: "Asian Town",            track: "3", every: 6 },
+  { op: "cm", line: "A", image: "a", trainNumbers: [1000, 1007], prefix: "", dest: "Downtown Santa Mooica", via: "via Downtown and the Airport", track: "1", every: 4 },
+  { op: "cm", line: "E", image: "e", trainNumbers: [747, 750], prefix: "", dest: "Table Central",         via: "via Downtown and the Airport", track: "2", every: 2 },
+  { op: "cm", line: "K", image: "k", trainNumbers: [101, 102], prefix: "", dest: "Asian Town",            track: "3", every: 6 },
   // City Metro Express, operated by Republic State Railways
   { op: "rsr", line: "RSR", dest: "Heartlake City", track: "4", area: "Regional Rail Area", service: RSR_SERVICE, every: 60,  start: "00:30" },
   { op: "rsr", line: "RSR", dest: "Pillow Beach",   track: "4", area: "Regional Rail Area", service: RSR_SERVICE, every: 120, start: "00:15" },
   { op: "rsr", line: "RSR", dest: "Los Angeles",    track: "4", area: "Regional Rail Area", service: RSR_SERVICE, every: 180, start: "00:00" },
   // City Metro-North Railroad
-  { op: "mn", line: "MN", dest: "TV Room Central",                       track: "5", every: 25 },
-  { op: "mn", line: "MN", dest: "Felix Lego City International Airport", track: "5", every: 25, start: "00:05" },
+  { op: "mn", line: "MN", dest: "TV Room Central",                       track: "5", area: "Regional Rail Area", every: 25 },
+  { op: "mn", line: "MN", dest: "Felix Lego City International Airport", track: "5", area: "Regional Rail Area", every: 25, start: "00:05" },
   // City MetroLink
-  { op: "ml", line: "ML", dest: "TV Room Central", via: "via Asian Town", track: "7", every: 35 },
-  { op: "ml", line: "ML", dest: "Felix Lego City International Airport", track: "6", every: 35 }  // ASSUMED every 35 min: no frequency was given, change me
+  { op: "ml", line: "ML", dest: "TV Room Central", via: "via Asian Town", track: "7", area: "Regional Rail Area", every: 35 },
+  { op: "ml", line: "ML", dest: "Felix Lego City International Airport", track: "6", area: "Regional Rail Area", every: 35 }  // ASSUMED every 35 min: no frequency was given, change me
 ];
 /* ==================================================== */
 
@@ -197,7 +200,12 @@ const SERVICES = [
         chip.style.background = op.color; chip.style.color = op.text || '#fff';
       }
       const then = r.times.slice(1).map(u => clockOf(n.mins + u, true)).join(', ');
-      const trainNo = (s.prefix || op.code) + trainNumber(r.trains[0].seq, r.i);
+      let numPart;
+      if (Array.isArray(s.trainNumbers) && s.trainNumbers.length === 2) {
+        const lo = Number(s.trainNumbers[0]), size = Number(s.trainNumbers[1]) - lo + 1;
+        numPart = String(lo + (((r.trains[0].seq % size) + size) % size));
+      } else numPart = trainNumber(r.trains[0].seq, r.i);
+      const trainNo = (s.prefix ?? op.code) + numPart;
       return el('div', { class: 'dep' + (s.status === 'cancelled' ? ' is-cancelled' : '') },
         el('div', { class: 'dep-time' },
           el('b', { text: clockOf(n.mins + until) }),
