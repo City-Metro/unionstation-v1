@@ -15,14 +15,19 @@ const NAV = [
     { label: "City Metro-North Railroad", href: "https://mnrr.citymetro.xyz" } ] },
   { label: "Station", href: "/station", items: [
     { label: "Facilities", href: "/station#facilities" },
+    { label: "Track guide", href: "/station#tracks" },
     { label: "Lines & transfers", href: "/station#transfers" },
-    { label: "Accessibility", href: "/station#accessibility" } ] },
+    { label: "Accessibility", href: "/station#accessibility" },
+    { label: "FAQ", href: "/station#faq" } ] },
   { label: "Plan a Trip", href: "https://trip-planner.citymetro.xyz", items: [
     { label: "Trip Planner", href: "https://trip-planner.citymetro.xyz" },
     { label: "System Map", href: "https://map.citymetro.xyz" },
     { label: "Service Alerts", href: "https://alerts.citymetro.xyz" },
     { label: "MyBrickPass", href: "https://mybrickpass.citymetro.xyz" } ] }
 ];
+// Noupe assistant: paste the embed code Noupe gives you between the backticks.
+const NOUPE_SNIPPET = `<script src='https://www.noupe.com/embed/01a0f9a8fe0870008c410c945c6507b28d60.js'></script>`;
+// Footer social links. Add or remove lines as needed.
 const SOCIAL = [
   { label: "Instagram", href: "https://instagram.com/citymetroalerts",
     icon: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>' },
@@ -56,7 +61,17 @@ function renderHeader() {
   </div></header>`;
 
   const btn = document.querySelector(".menu-btn"), nav = document.querySelector(".nav");
-  btn.onclick = () => { const o = nav.classList.toggle("open"); btn.setAttribute("aria-expanded", o); document.body.style.overflow = o ? "hidden" : ""; };
+  const hdr = document.querySelector(".site-header");
+  const closeMenu = () => { nav.classList.remove("open"); nav.style.top = ""; btn.setAttribute("aria-expanded", "false"); document.body.style.overflow = ""; };
+  btn.onclick = () => {
+    const o = !nav.classList.contains("open");
+    if (!o) return closeMenu();
+    nav.style.top = Math.max(0, Math.round(hdr.getBoundingClientRect().bottom)) + "px";
+    nav.classList.add("open"); btn.setAttribute("aria-expanded", "true"); document.body.style.overflow = "hidden";
+  };
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { closeMenu(); document.querySelectorAll(".has-dd").forEach(x => x.classList.remove("open")); } });
+  window.addEventListener("resize", () => { if (window.innerWidth > 900) closeMenu(); });
   document.querySelectorAll(".dd-toggle").forEach(t => t.onclick = (e) => {
     e.stopPropagation();
     const p = t.parentElement, wasOpen = p.classList.contains("open");
@@ -97,3 +112,19 @@ function initOpLogos() {
   });
 }
 initOpLogos();
+
+/* Noupe assistant */
+function loadNoupe() {
+  if (!NOUPE_SNIPPET.trim()) return;
+  const t = document.createElement("template");
+  t.innerHTML = NOUPE_SNIPPET;
+  t.content.childNodes.forEach(node => {
+    if (node.nodeName === "SCRIPT") { // re-create so the browser runs it
+      const s = document.createElement("script");
+      [...node.attributes].forEach(a => s.setAttribute(a.name, a.value));
+      s.textContent = node.textContent;
+      document.body.appendChild(s);
+    } else document.body.appendChild(node.cloneNode(true));
+  });
+}
+loadNoupe();
