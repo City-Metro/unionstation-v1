@@ -339,24 +339,10 @@ a.lb:hover,a.lb:focus-visible{transform:scale(1.08);outline:2px solid var(--blue
 .about-img + .btn-row{margin-top:-8px}
 
 /* ---- Union Station additions ---- */
-.op-cm{--op:#134590;--op-bg:#c5d4ea}.op-rsr{--op:#8a1c2b;--op-bg:#f1d3d8}.op-ml{--op:#0f7a5a;--op-bg:#cdeadf}.op-mn{--op:#b45309;--op-bg:#f6dfc2}
-@media (prefers-color-scheme:dark){.op-cm{--op:#7aa7ee;--op-bg:#16294a}.op-rsr{--op:#f08a99;--op-bg:#3a1319}.op-ml{--op:#6fd1a8;--op-bg:#0d2e24}.op-mn{--op:#f5b66b;--op-bg:#3a2509}}
-.op-card{background:var(--bg);border:1.5px solid var(--op-bg);border-top:8px solid var(--op);border-radius:28px;padding:32px;display:flex;flex-direction:column}
-.op-card h3{margin:0 0 4px;font-size:1.35rem}
-.op-card p{margin:0 0 14px;color:var(--muted)}
-.op-card .op-tag{display:inline-block;align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--op);margin-bottom:8px}
-.op-card .op-mark{width:64px;height:64px;border-radius:18px;background:var(--op-bg);color:var(--op);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.3rem;margin-bottom:18px}
-.op-card ul{margin:0 0 16px;padding-left:1.2rem;color:var(--muted)}
-.op-card li{margin:4px 0}
-.op-links{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px 18px}
-.op-links a{font-weight:700;color:var(--op)}
-.op-card .btn-op{background:var(--op);border-color:var(--op);color:#fff}
-@media (prefers-color-scheme:dark){.op-card .btn-op{color:#000}}
 .op-strip{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
 .op-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);color:#fff;font-weight:700;font-size:.95rem;text-decoration:none}
 .op-pill:hover{background:rgba(255,255,255,.28)}
 .op-dot{width:12px;height:12px;border-radius:50%;background:#fff;flex:none}
-.op-pill.cm .op-dot{background:#7aa7ee}.op-pill.rsr .op-dot{background:#f08a99}.op-pill.ml .op-dot{background:#6fd1a8}.op-pill.mn .op-dot{background:#f5b66b}
 .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--op);margin-right:8px}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:24px 0 8px}
 .table-wrap{overflow-x:auto;margin:20px 0}
@@ -414,9 +400,48 @@ table.t th{background:var(--card);font-size:.85rem;letter-spacing:.05em;text-tra
 .logo-text{display:flex;flex-direction:column;line-height:1.05;font-weight:700;font-size:1.05rem;color:var(--text)}
 .logo-text small{font-weight:600;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
 @media (max-width:420px){.logo-text{display:none}}
-.op-logo{display:block;height:56px;width:auto;max-width:150px;object-fit:contain;margin-bottom:18px}
-@media (prefers-color-scheme:dark){.op-logo.dk-invert{filter:brightness(0) invert(1)}}
 .plan-note{margin:0;font-size:.85rem;opacity:.9}
 .owner-note{margin:24px 0 0;color:var(--muted);font-size:.95rem}
 /* line images in Service Status: show nothing (no letter/colour infill) until the real picture has loaded */
 .lb.img-pending{background:transparent!important;color:transparent!important;box-shadow:none}
+
+/* ---- operator colours: RSR red, City Metro white/light blue, City MetroLink blue, City Metro-North green ---- */
+.op-cm{--op:#8cc8f0;--op-text:#1a5f96;--op-bg:#e8f4fc}
+.op-rsr{--op:#c4161c;--op-text:#b3131b;--op-bg:#fbe1e3}
+.op-ml{--op:#1d5fd1;--op-text:#1d5fd1;--op-bg:#dce8fb}
+.op-mn{--op:#14803f;--op-text:#14803f;--op-bg:#d9f0e2}
+@media (prefers-color-scheme:dark){
+.op-cm{--op:#9fd3f5;--op-text:#9fd3f5;--op-bg:#12283b}
+.op-rsr{--op:#f26b72;--op-text:#ff8f95;--op-bg:#3a1317}
+.op-ml{--op:#6aa2ff;--op-text:#8db6f8;--op-bg:#14264a}
+.op-mn{--op:#4cc283;--op-text:#6fd6a0;--op-bg:#0f2e1d}}
+.op-pill.cm .op-dot{background:#9fd3f5}.op-pill.rsr .op-dot{background:#ff7b84}.op-pill.ml .op-dot{background:#6aa2ff}.op-pill.mn .op-dot{background:#5fd69a}
+.dot{background:var(--op);box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+
+/* operator cards */
+.op-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:22px;margin:22px 0}
+.op-grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
+.op-card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--op-bg);border-radius:24px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.07);transition:transform .15s ease,box-shadow .15s ease}
+.op-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.12)}
+.op-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 22px;background:var(--op-bg);border-bottom:4px solid var(--op)}
+.op-logo-wrap{display:flex;align-items:center;justify-content:center;height:64px;min-width:64px;padding:8px 14px;border-radius:16px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.op-logo{display:block;height:44px;width:auto;max-width:130px;object-fit:contain}
+.op-mark{font-weight:800;font-size:1.35rem;letter-spacing:.02em;color:var(--op-text)}
+.op-rsr .op-mark{color:#b3131b}
+.op-tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--op-text);text-align:right}
+.op-body{display:flex;flex-direction:column;flex:1;padding:22px}
+.op-body h3{margin:0 0 6px;font-size:1.3rem}
+.op-body p{margin:0 0 14px;color:var(--muted)}
+.op-body ul{list-style:none;margin:0 0 16px;padding:0}
+.op-body li{position:relative;padding-left:20px;margin:8px 0;color:var(--muted)}
+.op-body li::before{content:"";position:absolute;left:2px;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--op)}
+.op-body li b{color:var(--text)}
+.op-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:auto;padding-top:6px}
+.op-links a{font-weight:700;color:var(--op-text)}
+
+/* contact + footer notices */
+.emergency{display:flex;align-items:center;gap:18px;margin:22px 0;padding:20px 24px;border-radius:20px;background:#fbe1e3;border:2px solid #c4161c;color:#4a0a0e}
+.emergency h2{margin:0 0 4px;font-size:1.25rem}.emergency p{margin:0}.emergency a{color:#4a0a0e;font-weight:700}
+.emergency .line-icon{background:#c4161c;color:#fff;flex:none}
+@media (prefers-color-scheme:dark){.emergency{background:#3a1317;border-color:#f26b72;color:#ffd9dc}.emergency a{color:#fff}.emergency .line-icon{background:#f26b72;color:#2a0a0d}}
+.legal-note{margin:14px 0 0;font-size:.85rem;opacity:.85}
