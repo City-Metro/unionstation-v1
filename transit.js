@@ -13,7 +13,7 @@
     ACCESS_URL: 'https://alerts.citymetro.xyz',    // "Elevator & Escalator Status" row
     // Optional: put your own copies of the rail line images on this site (e.g. /img/lines/a.svg or a.png, named by the line's slug)
     // and set this to '/img/lines/'. They are tried first, then the image from the database. Leave '' to use the database images only.
-    LOCAL_IMG_DIR: 'https://police.citymetro.xyz/img/lines/',
+    LOCAL_IMG_DIR: 'https://citymetro.xyz/img/lines/',
     PLANNER_URL: 'https://trip-planner.citymetro.xyz/planner',   // opened as ?from=<station id>&to=<station id>
     PLANNER_HOME: 'https://trip-planner.citymetro.xyz',
     // Which field on each alerts line says "rail", "bus" or "accessibility". Tried in this order.
