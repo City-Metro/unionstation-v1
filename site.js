@@ -1,5 +1,5 @@
 /* ===== EDIT ME ===== */
-const ANNOUNCEMENT_URL = "https://ride-metro.felixfeger46.workers.dev/api/announcement";
+const ANNOUNCEMENT_URL = "https://api.alerts.citymetro.xyz/api/announcement";
 const ANNOUNCEMENT = {
   enabled: true,
   text: "Welcome to Union Station Lego City: one station, four operators.",
